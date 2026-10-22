@@ -1,0 +1,109 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "APIMATIC Calculator",
+    "description": "Simple calculator API hosted on APIMATIC",
+    "contact": {},
+    "version": "2.3"
+  },
+  "servers": [
+    {
+      "url": "https://examples.apimatic.io/apps/calculator",
+      "description": "This environment connect to the LIVE calculator API",
+      "variables": {}
+    }
+  ],
+  "paths": {
+    "/{operation}": {
+      "get": {
+        "tags": [
+          "Simple Calculator"
+        ],
+        "summary": "Calculate",
+        "description": "Calculates the expression using the specified operation.",
+        "operationId": "Calculate",
+        "parameters": [
+          {
+            "name": "operation",
+            "in": "path",
+            "description": "The operator to apply on the variables",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/OperationType"
+            },
+            "example": "SUM"
+          },
+          {
+            "name": "x",
+            "in": "query",
+            "description": "The LHS value",
+            "required": true,
+            "schema": {
+              "type": "number",
+              "format": "double",
+              "description": "Left-hand operand of the expression",
+              "example": 4
+            },
+            "example": 4
+          },
+          {
+            "name": "y",
+            "in": "query",
+            "description": "The RHS value",
+            "required": true,
+            "schema": {
+              "type": "number",
+              "format": "double",
+              "description": "Right-hand operand of the expression",
+              "example": 5
+            },
+            "example": 5
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The result of the calculation",
+            "headers": {},
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "number",
+                  "format": "double",
+                  "description": "Result of applying the operation to x and y",
+                  "example": 9
+                },
+                "example": 9
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "OperationType": {
+        "title": "OperationType",
+        "enum": [
+          "SUM",
+          "SUBTRACT",
+          "MULTIPLY",
+          "DIVIDE"
+        ],
+        "type": "string",
+        "description": "Possible operators are sum, subtract, multiply, divide",
+        "example": "SUM"
+      }
+    }
+  },
+  "security": [
+    {}
+  ],
+  "tags": [
+    {
+      "name": "Simple Calculator",
+      "description": "Basic arithmetic on two numbers"
+    }
+  ]
+}
