@@ -1,0 +1,6 @@
+{
+  "OpenAPIDefinitionPaths": [
+    "CalculatorAPI.json"
+  ],
+  "IgnoreValidationErrors": false
+}
