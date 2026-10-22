@@ -1,6 +1,6 @@
 {
   "OpenAPIDefinitionPaths": [
-    "CalculatorAPI.json"
+  "pet-api.json"
   ],
   "IgnoreValidationErrors": false
 }
